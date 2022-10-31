@@ -50,6 +50,22 @@ import IconIcon from "./icons/PlasmicIcon__Icon"; // plasmic-import: on5inL9tgye
 import image2I7GLlVst from "./images/image2.png"; // plasmic-import: I7g-LLVst/picture
 import Messenger from "../../Messenger";
 import TeeShirt from "../../TeeShirt";
+import { loadStdlib } from "@reach-sh/stdlib";
+import MyAlgoConnect from "@reach-sh/stdlib/ALGO_MyAlgoConnect";
+import ConnectWalletButton from "./ConnectButton/ConnectWalletBtn";
+import TransferFund from "./Transferfund";
+import FundAccount from "./FundWallet";
+import myalgo from "../../assets/images/myaglo-logo.png";
+import { MyAlgoWalletMain } from "./MyAlgoWallet.styles";
+
+const reach = loadStdlib("ALGO");
+
+reach.setWalletFallback(
+  reach.walletFallback({
+    providerEnv: "TestNet",
+    MyAlgoConnect,
+  })
+);
 
 export type PlasmicHomepage__VariantMembers = {};
 export type PlasmicHomepage__VariantsArgs = {};
@@ -520,6 +536,8 @@ function PlasmicHomepage__RenderFunc(props: {
             </Button>
 
             <Button
+              accountAddress={accountAddress}
+              connectWallet={connectWallet}
               className={classNames("__wab_instance", sty.button___37Oyz)}
             >
               {"Connect your Wallet"}
